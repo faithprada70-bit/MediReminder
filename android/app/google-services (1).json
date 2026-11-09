@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "176412189699",
+    "project_id": "medireminder-eaa55",
+    "storage_bucket": "medireminder-eaa55.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176412189699:android:33e0782d97bfd38d13da36",
+        "android_client_info": {
+          "package_name": "com.example.medi_reminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALH9cAnaOg0hAGgoZIHEoFXwQM-hlOJdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

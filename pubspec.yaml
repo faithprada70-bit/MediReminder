@@ -1,0 +1,36 @@
+name: medi_reminder
+description: MediReminder - a local medicine schedule and health tracking prototype.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.5.3
+  intl: ^0.20.2
+  flutter_local_notifications: ^19.4.2
+  timezone: ^0.10.1
+  image_picker: ^1.2.0
+  firebase_core: ^5.1.0
+  firebase_auth: ^7.0.1
+  flutter_timezone: ^5.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/app_icon.png"
