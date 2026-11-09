@@ -1,67 +1,186 @@
-# MediReminder
+# MediReminder – Medicine and Vitamins Reminder App
 
-MediReminder is a student-friendly Flutter prototype for organizing medicine and vitamin schedules. It uses a premium dark violet interface inspired by the supplied UI collage.
+MediReminder is a mobile application developed using Flutter and Dart. Its main purpose is to help users organize their medicine and vitamin schedules and remember when to take them through scheduled notifications.
+
+The application provides a simple and user-friendly way to manage medicine records, set reminder schedules, and monitor medicine activities.
 
 ## Features
-- Local prototype sign-up, login, logout, and password reset
-- Add, view, edit, activate/deactivate, and delete medicine records
-- Daily schedule and reminder-time display
-- Local notification scheduling (device permission and platform setup required)
-- Taken/missed history entries and basic adherence insights
-- Profile information and app preferences
-- Dark violet theme and responsive scrolling layouts
 
-## Run in VS Code
-1. Extract the ZIP.
-2. Open the `medi_reminder` folder in VS Code.
-3. Open Terminal in the project folder.
-4. Run `flutter pub get`.
-5. Run `flutter run`.
+- User registration and login using Firebase Authentication
+- Add, view, edit, activate, and deactivate medicine records
+- Delete medicine records
+- Add medicines and vitamins
+- Set medicine dosage and frequency
+- Set specific reminder times
+- Set medicine start and end dates
+- Schedule daily medicine and vitamin reminders
+- Snooze reminders for 15 minutes
+- Mark medicine activities as Taken or Missed
+- View medicine activity History
+- Automatic missed-dose recording when the app reconciles schedules
+- Profile information and application settings
+- Simple and user-friendly interface
 
-This archive contains the complete Dart application source. Flutter and Dart SDKs are not installed in the file-generation environment, so it has not been compiled here. The `android/` and `ios/` folders contain setup notes rather than generated native runner projects. To generate native platform scaffolding, run:
+## Technologies Used
+
+- **Flutter** – Mobile application framework
+- **Dart** – Programming language
+- **Firebase Authentication** – User registration and login
+- **SharedPreferences** – Local storage for medicine records and History
+- **Flutter Local Notifications** – Scheduled medicine reminders
+- **Android Studio** – Android development environment
+- **Visual Studio Code** – Code editor
+
+## How to Run the Project
+
+### Requirements
+
+Before running the application, make sure you have installed:
+
+- Flutter SDK
+- Dart SDK
+- Android Studio
+- Visual Studio Code
+- Git
+
+### Installation Steps
+
+1. Clone or download this repository from GitHub.
+2. Open the project folder named `medi_reminder` in Visual Studio Code.
+3. Open the terminal in the project folder.
+4. Install the required dependencies:
 
 ```bash
-flutter create --platforms=android,ios .
 flutter pub get
+```
+
+5. Check your Flutter environment:
+
+```bash
+flutter doctor
+```
+
+6. Connect an Android device or start an Android emulator.
+7. Run the application:
+
+```bash
 flutter run
 ```
 
-If you only target Android, use `flutter create --platforms=android .`.
+## Project Structure
 
-## Where to edit things
-- Colors: `lib/core/theme/app_colors.dart`
-- Theme and typography: `lib/core/theme/app_theme.dart`, `app_text_styles.dart`
-- Navigation: `lib/core/routes/app_routes.dart`
-- Authentication: `lib/services/auth_service.dart`
-- Medicine records: `lib/services/medicine_service.dart`
-- Notifications: `lib/services/notification_service.dart`
-- Screens: `lib/features/`
-- Reusable UI: `lib/widgets/`
-- Images: `assets/images/` (the UI works without custom images)
+The project is organized into different folders to make the application easier to manage and maintain.
 
-## Local prototype authentication
-Accounts are stored on the device using SharedPreferences. This is suitable only for a classroom prototype. Passwords are stored locally and are **not securely hashed or protected**. Do not use real passwords or treat this as production authentication. A production app should use a secure backend and a proper authentication provider.
-
-## Reminder notes
-The app requests notification permission and schedules local notifications on supported devices. Android exact-alarm behavior and iOS permissions depend on the OS version and device settings. A denied permission may prevent alerts. A reminder is an organizational aid only; follow the instructions given by a qualified healthcare professional and the medicine label. MediReminder does not recommend medicines or determine doses.
-
-## Assets
-Place optional images in `assets/images/` and icons in `assets/icons/`. Avoid referencing an asset in Dart until it exists in the folder and is declared in `pubspec.yaml`.
-
-## App name
-The Flutter package name is `medi_reminder`. The visible app title is configured in `lib/main.dart`. Native launcher names/icons can be changed in the generated Android/iOS runner projects.
-
-
-## Android notification permission
-After generating the Android runner, open `android/app/src/main/AndroidManifest.xml` and add this permission directly inside the root `<manifest>` element (before `<application>`):
-
-```xml
-<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+```text
+medi_reminder/
+│
+├── android/
+│   └── Android application configuration
+│
+├── assets/
+│   ├── images/
+│   └── icons/
+│
+├── lib/
+│   │
+│   ├── core/
+│   │   ├── constants/
+│   │   ├── routes/
+│   │   ├── theme/
+│   │   └── utils/
+│   │
+│   ├── features/
+│   │   ├── about/
+│   │   ├── auth/
+│   │   ├── help/
+│   │   ├── history/
+│   │   ├── home/
+│   │   ├── insights/
+│   │   ├── medicine/
+│   │   ├── notifications/
+│   │   ├── onboarding/
+│   │   ├── profile/
+│   │   ├── schedule/
+│   │   └── splash/
+│   │
+│   ├── services/
+│   │   ├── auth_service.dart
+│   │   ├── medicine_service.dart
+│   │   ├── notification_service.dart
+│   │   └── storage_service.dart
+│   │
+│   ├── widgets/
+│   │
+│   ├── firebase_options.dart
+│   └── main.dart
+│
+├── test/
+│
+├── pubspec.yaml
+├── pubspec.lock
+├── analysis_options.yaml
+├── README.md
+└── .gitignore
 ```
 
-The app requests notification permission at runtime from Settings. On some Android versions, scheduled alarms may be delayed by battery optimization. This prototype schedules the next reminder occurrence; it does not yet implement a full recurring multi-dose scheduler.
+## Authentication System
 
-## Prototype scope notes
-- The Snooze action schedules a one-time alert 15 minutes later.
-- Backup/restore, gallery profile-photo selection, and external support messaging are presented as unavailable prototype actions rather than pretending to complete them.
-- History records actions the user marks as Taken. Missed doses are not inferred automatically.
+MediReminder uses Firebase Authentication for user registration and login.
+
+Users can create an account and log in to access the application's features.
+
+## Data Storage
+
+The application uses SharedPreferences to store medicine records and History entries locally on the device.
+
+**Important:** Medicine records and History are stored locally. They are not automatically synchronized between different devices. Firebase is currently used for authentication.
+
+## Notification System
+
+MediReminder uses Flutter Local Notifications to remind users about their medicine and vitamin schedules.
+
+Users can:
+
+- Set specific reminder times.
+- Receive scheduled daily reminders on supported Android devices.
+- Snooze reminders for 15 minutes.
+- Manage their medicine reminder schedules.
+
+Notification delivery depends on device permissions, Android settings, and battery optimization. Some notifications may be delayed or unavailable if permissions are disabled.
+
+## History and Medicine Tracking
+
+The History feature allows users to view their recorded medicine activities.
+
+Users can mark medicine activities as Taken or Missed. The application also has missed-dose reconciliation when schedules are checked, subject to its configured grace period.
+
+The History feature helps users review their recorded medicine activities.
+
+## Project Purpose
+
+The main purpose of MediReminder is to help users organize their medicine and vitamin schedules in one application.
+
+It aims to make medicine schedule management easier and more convenient by providing scheduled reminders and a History feature.
+
+MediReminder is an organizational tool only. It does not recommend medicines, prescribe treatments, or determine dosages. Users should follow the instructions provided by qualified healthcare professionals and medicine labels.
+
+## Future Improvements
+
+Possible improvements for future versions include:
+
+- Cloud backup and synchronization of medicine records
+- Improved medicine History and reports
+- Additional notification customization
+- More application personalization options
+
+## Developer
+
+**Project Name:** MediReminder – Medicine and Vitamins Reminder App
+
+**Platform:** Android
+
+**Framework:** Flutter
+
+**Programming Language:** Dart
+
+**Project Type:** Mobile Application Project
